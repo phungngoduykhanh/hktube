@@ -52,6 +52,7 @@ body {
   justify-content: center;
 }
 
+
 .login-card {
   background-color: white;
   border: 1px solid #ddd;
@@ -70,7 +71,7 @@ body {
 
   .column {
     padding: 4rem;
-
+   
     &:last-child {
       background: url('/asset/img/19007.jpg');
       background-size: cover;
@@ -128,7 +129,7 @@ body {
         }
         }
       }
-
+      
       .btn-signup {
         display: inline-block;
         padding: 12px 30px;
@@ -187,11 +188,8 @@ body {
 
   form {
     margin-top: 3rem;
-
     &>* {
       margin-top: 1rem;
-    }
-
     button {
       background-color: $primary-color;
       color:white;
@@ -231,6 +229,7 @@ body {
         }
       }
     }
+   
   }
 }
 
@@ -295,4 +294,4 @@ body {
     gap: 1rem;
   }
 
-}
+}}

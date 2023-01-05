@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="asset/style/style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 </head>
-<body>
+<body onload="getUser()">
   <div class="container">
     <div class="login-header">
       <div class="banner">
@@ -26,16 +26,19 @@
           <p>Login to explore more feature</p>
           <form name="lgf">
             <div class="form-item">
-              <input type="text" class="form-element" placeholder="Username" name="user">
+              <input type="text" class="form-element" placeholder="Username" id="user">
             </div>
             <div class="form-item">
-              <input type="password" class="form-element" placeholder="Password" name="pass">
+              <input type="password" class="form-element" placeholder="Password" id="pass" onkeyup="checklogin()">
               <div class="form-checkbox-item">
                 <input type="checkbox" id="rememberMe" checked>
                 <label for="rememberMe">Remember Me</label>
+                <div>
+                  <p id="wrong"></p>
+                </div>
               </div>
               <div class="flex">
-                <button type="submit">Sign in</button>
+                <button type="submit" id="btn-signin" disabled onclick="login()">Sign in</button>
               </div>
             </div>
             <p>Other sign-in methods</p>
@@ -55,10 +58,10 @@
         <div class="column">
           <h2>Welcome to <span class="h-title">H</span><span class="k-title">K</span>Tube</h2>
           <p>If you don't have an account, would you like to register <br> right now?</p>
-          <a href="#" class="btn-signup" onclick="loginpage()">Sign-Up</a>
+          <input type="button" class="btn-signup" id="btnchange" value="Sign up" onclick="changepage()">
           <p>Visit our social links</p>
             <div class="social-buttons">
-              <a href="" class="facebook" onclick="login()">
+              <a href="" class="facebook">
                 <i class="bi bi-facebook"></i>
               </a>
               <a href="" class="twitter">
@@ -72,7 +75,7 @@
       </div>
     </div>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js" integrity="sha512-QTnb9BQkG4fBYIt9JGvYmxPpd6TBeKp6lsUrtiVQsrJ9sb33Bn9s0wMQO9qVBFbPX3xHRAsBHvXlcsrnJjExjg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="function/function.js"></script>
 </body>
 </html>

@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+.check {
+  margin: 5px;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   min-height: 100vh;
