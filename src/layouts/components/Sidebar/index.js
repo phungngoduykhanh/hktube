@@ -6,6 +6,7 @@ const cx= classNames.bind(styles);
 
 function Sidebar (){
     return <aside className={cx('wrapper')}>
+        Sidebar
         {/* <Menu>
             <menuItem title="f" to={config.router.Home} icon={}/>
         </Menu> */}

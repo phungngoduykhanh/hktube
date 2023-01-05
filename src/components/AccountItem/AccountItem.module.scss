@@ -3,6 +3,10 @@
     align-items: center;
     padding: 6px 16px;
     cursor: pointer;
+
+    &:hover{
+        background-color: var(--color-second);
+    }
 }
 .avatar{
     width: 40px;
