@@ -6,14 +6,28 @@ import Shorts from "~/pages/Shorts";
 import Upload from "~/pages/Upload";
 import Search from "~/pages/Search";
 import Profile from "~/pages/Profile";
+import Libarary from "~/pages/Libarary";
+import Watched from "~/pages/Watched";
+import Liked from "~/pages/Liked";
+import Setting from "~/pages/Setting";
+import Help from "~/pages/Help";
+import Report from "~/pages/Report";
 
 const publicRoutes = [
   { path: "/", component: Home },
   { path: "/Subscriptions", component: Subscriptions },
-  { path: "/@:id", component: Profile },
+  { path: `/@:id`, component: Profile },
   { path: "/Shorts", component: Shorts },
   { path: "/Upload", component: Upload, layout: HeaderOnly },
   { path: "/Search", component: Search, layout: null },
+
+  { path: "/Libarary", component: Libarary },
+  { path: "/Watched", component: Watched },
+  { path: "/Liked", component: Liked },
+  { path: "/Setting", component: Setting },
+  { path: "/Help", component: Help },
+  { path: "/Report", component: Report },
+  
 ];
 const privateRoutes = [];
 

@@ -7,7 +7,9 @@ import styles from './Search.module.scss';
 import { useDebounce } from '~/hooks';
 import { useEffect, useState, useRef  } from 'react';
 import { wrapper as SeachArea } from '~/components/SearchArea';
-import * as searchServices from '~/apiServices/searchService';
+import * as getApi from '~/apiServices/getApi';
+
+
 const cx=classNames.bind(styles);
 
 function Search(){
@@ -27,17 +29,15 @@ function Search(){
     }
     
     useEffect(()=>{
-        if (!debounced){
+        if(!debounced){
             setSearchResult([])
-            return;
+        }
+        const fetchApi = async ()=>{
+            const result = await getApi.search(debounced);
+                setSearchResult(result)
         }
 
-    const fetchApi = async ()=>{
-        const result = await searchServices.search(debounced);
-        setSearchResult(result);
-    }
-
-    fetchApi();
+        fetchApi();
         
     },[debounced])
 

@@ -10,6 +10,9 @@ import images from '~/assets/images';
 import { wrapper as SeachArea } from '~/components/SearchArea';
 import { Link } from 'react-router-dom';
 
+
+
+
 const cx=classNames.bind(styles);
 
 function Header (){
@@ -24,7 +27,7 @@ function Header (){
                     <img src={images.logo} alt='HKTube'/>
                     <h2><span className={cx('color-H')}>H</span><span className={cx('color-K')}>K</span>Tube</h2>
                 </Link>
-                
+
                 <Search/>
             
                 <div className={cx('actions')}>
@@ -59,7 +62,7 @@ function Header (){
                     
                 ):(
                     <>
-                        <Button primary lefticon={<FontAwesomeIcon icon={faCircleUser} />}>
+                        <Button href={'http://127.0.0.1:5500/hktube-ui/src/login/login.html'} primary lefticon={<FontAwesomeIcon icon={faCircleUser} />}>
                             SIGN IN
                         </Button>
                     </>
