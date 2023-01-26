@@ -4,12 +4,13 @@ export const search = async (debounced)=>{
     const ress= res.data;
     let a;
     ress.map((res,index)=>{
-        if (debounced == ress[index].full_name){
+        if (debounced === ress[index].full_name){
             a = ress[index];
         }
+        return a
     })
 
-    if (a==undefined){
+    if (a===undefined){
         return [];
     }
     else {
@@ -23,16 +24,17 @@ export const videoLong = async ()=>{
     var ress=res.data;
     var longs=[];
     ress.map((res)=>{
-            if(res.typevideo=='long'){
+            if(res.typevideo==='long'){
                 res.video=(res.video).slice(17);
                 if(res.view>=1000){
                     res.view=res.view+'K views'
-                }else if(res.view==1){
+                }else if(res.view===1){
                     res.view+=" view"
                 }
                 else {res.view+=" views"}
                 longs.push(res);
             }
+        return res
     })
 
 
@@ -41,8 +43,8 @@ export const videoLong = async ()=>{
     longs.map((res)=>{
     var random =Math.floor(Math.random()* longs.length);
         a.splice(random,0,res)
+        return a
     })
-
     return a;
 };
 
@@ -52,19 +54,19 @@ export const videoShort = async ()=>{
     var ress=res.data;
     var shorts=[];
     ress.map((res)=>{
-            if(res.typevideo=='short'){
-                res.video=(res.video).slice(17);
+            if(res.typevideo==='short'){
+                res.video=(res.video).replace('https://youtube.com/shorts/',"");
+                res.video=(res.video).replace('?feature=share',"");
                 shorts.push(res);
             }
-
+        return shorts
     })
-
-
 
     var a=[];
     shorts.map((res)=>{
     var random =Math.floor(Math.random()* shorts.length);
         a.splice(random,0,res)
+        return a;
     })
 
     return a;

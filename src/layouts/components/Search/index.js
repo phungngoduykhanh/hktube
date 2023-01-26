@@ -4,7 +4,7 @@ import AccountItem from '~/components/AccountItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
-import { useDebounce } from '~/hooks';
+import useDebounce from '~/hooks/useDebounce';
 import { useEffect, useState, useRef  } from 'react';
 import { wrapper as SeachArea } from '~/components/SearchArea';
 import * as getApi from '~/apiServices/getApi';

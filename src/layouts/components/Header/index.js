@@ -55,7 +55,7 @@ function Header (){
                                 </div>
                             )}
                         >
-                            <img src={userAvatar} className={cx('user-avatar')}/>
+                            <img src={userAvatar} className={cx('user-avatar')} alt=""/>
                             
                         </Tippy>  
                     </> 

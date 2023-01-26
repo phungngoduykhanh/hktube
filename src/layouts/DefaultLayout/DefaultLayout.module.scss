@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column ;
     width: auto;
+    background-image: url('~/src/assets/images/rsz_4background.jpg');
 }
 
 .container{
@@ -11,10 +12,8 @@
 
 
 .content{
-    margin-inline-start: 105px;
     margin-left: 180px;
     width: 100%;
-    background-image: url('~/src/assets/images/rsz_4background.jpg');
     background-attachment: fixed;
     background-repeat: no-repeat;
     padding: 18px;

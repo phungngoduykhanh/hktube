@@ -2,9 +2,9 @@ import classNames from "classnames/bind";
 import styles from './Home.module.scss';
 import { LongVideo } from "~/components/LongVideo";
 import * as getApi from '~/apiServices/getApi';
-
+import { ShortVideo } from "~/components/ShortVideo";
 import { useState, useEffect } from "react";
- 
+
 const cx = classNames.bind(styles);
 
 function Home(){
@@ -23,7 +23,7 @@ function Home(){
         }
         fetchApi();
     },[])
-
+    
     return (
         <div className={cx('wrapper')}>
             <div className={cx('menu-item')}>
@@ -31,10 +31,16 @@ function Home(){
 
             <div className={cx('products')}>   
                 {longvideos.map((result)=>(
-                    <LongVideo key={result.id} data={result}/>
+                    <LongVideo key={result.id} data={result} wrapp={'wrapp'} onClick={result.id} />
                 ))}
             </div>
+
+            <div  className={cx('shortvideo')}>
+                {shortvideos.map((result)=>(
+                    <ShortVideo  key={result.id} data={result} hideinfo={"hideinfo"} classs={'smallvideo'} />
+                ))}
             </div>
+        </div>
       
     )
 }

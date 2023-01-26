@@ -7,6 +7,7 @@ import Upload from "~/pages/Upload";
 import Search from "~/pages/Search";
 import Profile from "~/pages/Profile";
 import Libarary from "~/pages/Libarary";
+import Watch from "~/pages/Watch";
 import Watched from "~/pages/Watched";
 import Liked from "~/pages/Liked";
 import Setting from "~/pages/Setting";
@@ -28,7 +29,7 @@ const publicRoutes = [
   { path: "/Help", component: Help },
   { path: "/Report", component: Report },
   
+  { path: "/Watch", component: Watch, layout: HeaderOnly },
 ];
-const privateRoutes = [];
 
-export { publicRoutes, privateRoutes };
+export { publicRoutes };

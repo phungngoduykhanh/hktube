@@ -1,6 +1,5 @@
 .wrapper{
     --search-border-radius:62px;
-
     position: fixed;
     z-index: 10;
     width: 100%;
@@ -9,6 +8,7 @@
     border-bottom: 1px solid var(--primary);
     background-color: white;
 }
+
 .content{
     height: 100%;
     display: grid;
@@ -28,7 +28,9 @@
     height: auto;
 }
 .logo h2{
-    padding-top: 9px;
+    padding-top: 10px;
+    font-weight: 600;
+    font-size:23px;
 }
 .logo h2 .color-H{
     color: var(--primary);
@@ -49,9 +51,10 @@
     color: var(--primary);
     padding: 4px 10px ;
     cursor: pointer;
-
+    
     &:active{
         color: var(--click);
+        border: none;
     }
 }
 

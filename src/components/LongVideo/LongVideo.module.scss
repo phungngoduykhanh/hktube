@@ -1,4 +1,4 @@
-.Video{
+.wrapper{
     min-width: 328px;
     grid-row-gap: 10px;
     grid-column-gap: 18px;
@@ -10,17 +10,9 @@
             margin-right: 15px;
         }
     }
-    .video-container::before{
-        content: "";
-        z-index: 1;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        background-color: transparent;
-        cursor: pointer;
-    }
+    .img-video{
+        border-radius: 10px;
+    } 
 }
 
 
@@ -31,6 +23,7 @@ overflow: hidden;
 position: relative;
 width: 100%;
 border-radius: 15px;
+
 }
 
 .video-container::after{
@@ -79,7 +72,7 @@ color: var(--primary);
 
 
 @media (max-width:530px) {
-    .Video{
+    .wrapper{
         margin: 15px 0;
     }
     .video-container{
