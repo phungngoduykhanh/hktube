@@ -4,6 +4,7 @@ import { LongVideo } from "~/components/LongVideo";
 import * as getApi from '~/apiServices/getApi';
 import { ShortVideo } from "~/components/ShortVideo";
 import { useState, useEffect } from "react";
+import * as getDataUser from '~/apiServices/getDataUser';
 
 const cx = classNames.bind(styles);
 
@@ -13,6 +14,8 @@ function Home(){
 
     const [shortvideos, setShortVideos]= useState([]);
 
+    const [currentUser,setCurrentUser]= useState();
+
     useEffect(()=>{
         const fetchApi = async ()=>{
             const resultLV = await getApi.videoLong();
@@ -20,6 +23,9 @@ function Home(){
                 
             const resultSV = await getApi.videoShort();
                 setShortVideos(resultSV);
+
+            const resultUR = await getDataUser.getDataUser();
+                setCurrentUser(resultUR);
         }
         fetchApi();
     },[])
@@ -31,7 +37,7 @@ function Home(){
 
             <div className={cx('products')}>   
                 {longvideos.map((result)=>(
-                    <LongVideo key={result.id} data={result} wrapp={'wrapp'} onClick={result.id} />
+                    <LongVideo key={result.id} data={result} UR={currentUser}/>
                 ))}
             </div>
 

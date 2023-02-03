@@ -6,13 +6,12 @@ const cx=classNames.bind(styles);
 
 function AccountItem({data}){
     return (
-    <NavLink to={`@${data.id}`} className={cx('wrapper')}>
-        <img className={cx('avatar')} src={data.avatar}/>
+    <NavLink to={`/Profile`} className={cx('wrapper')}>
+        <img className={cx('avatar')} src={data.imgauthor} alt=""/>
         <div className={cx('info')}>
             <p className={cx('name')}>
-                {data.full_name}
+                {data.nameauthor}
             </p>
-            <span className={cx('username')}>{data.nickname}</span>
         </div>
     </NavLink>
 )}

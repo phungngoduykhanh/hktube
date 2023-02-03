@@ -147,11 +147,19 @@ body:after {
 .login-card h1 {
   margin-bottom: 15px;
 }
+
+.login-card .form-row {
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+
+}
+
 .login-card .form-element {
   width: 100%;
   border: none;
   background-color: #f1f1f1;
-  padding: 20px 30px;
+  padding: 15px 30px;
   font-size: 18px;
   border-radius: 50px;
   transition: box-shadow 0.2s;
@@ -172,7 +180,7 @@ body:after {
   scale: 0.95;
 }
 .login-card form {
-  margin-top: 3rem;
+  margin-top: 1rem;
 }
 .login-card form > * {
   margin-top: 1rem;

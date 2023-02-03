@@ -6,7 +6,6 @@
     display: grid;
     grid-template-columns: 70% 1fr;
     grid-column-gap: 43px;
-   
     // author info
     .info{
         margin-left: 12px;
@@ -16,6 +15,7 @@
             position: relative;
             width: 100%;
             border-radius: 15px;
+            margin-bottom: 18px;
         }
         
         .video-container::after{
@@ -34,7 +34,6 @@
     
         .name-video{
             font-weight: 700;
-            padding: 15px 0;
             font-size: 28px;
             line-height: 19px;
             color: var(--primary);
@@ -160,6 +159,7 @@
     }
 
 }
+
 
 
 

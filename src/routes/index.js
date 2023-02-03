@@ -17,7 +17,7 @@ import Report from "~/pages/Report";
 const publicRoutes = [
   { path: "/", component: Home },
   { path: "/Subscriptions", component: Subscriptions },
-  { path: `/@:id`, component: Profile },
+  { path: `/Profile`, component: Profile },
   { path: "/Shorts", component: Shorts },
   { path: "/Upload", component: Upload, layout: HeaderOnly },
   { path: "/Search", component: Search, layout: null },

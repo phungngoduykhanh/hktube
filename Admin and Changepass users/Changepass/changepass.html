@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Changepass</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+</head>
+<body>
+    <div class="container mt-3">
+        <button class="myModal" onclick="modalchange()">change your password</button>
+    </div>
+    <div id="modalcontent">
+        <form class="modal-content">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('modalcontent').style.display='none'" class="close"
+                    title="Close Modal">&times;</span>
+            </div>
+            <div id="modalbody">
+                <!-- <b id="wrong"><span>&#10008;</span></b>
+                    <b id="correct"><span>&#10003;</span></b> -->
+                <label><b id="title">Old password:</b>
+                </label><br>
+                <input type="text" placeholder="Enter old password" name="oldpass" id="oldpass" required>
+                <br>
+                <label><b id="title">New password:</b></label>
+                <br>
+                <input type="password" placeholder="Enter new password" name="newpass" id="newpass" required>
+                <br>
+                <label><b id="title">Confirm password:</b></label>
+                <br>
+                <input type="password" placeholder="Enter confirm password" name="confirmpass" id="confirmpass"
+                    required>
+            </div>
+            <div id="modalfooter">
+
+            </div>
+            <br>
+            <div class="container">
+                <button type="button" onclick="document.getElementById('modalcontent').style.display='none'"
+                    class="cancelbtn">Cancel</button>
+            </div>
+        </form>
+    </div>
+    <script src="changepass.js"></script>
+    <script>
+        var modal = document.getElementById('modalcontent');
+
+        
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="changepass.css">
+</body>
+
+</html>

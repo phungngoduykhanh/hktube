@@ -5,10 +5,11 @@ import styles from './Button.module.scss';
 
 const cx = classNames.bind(styles);
 
-function Button({ to, href, lefticon, large, primary ,disabled=false, children, onClick}){
+function Button({ to, href, lefticon, small, primary ,disabled, children, onClick}){
     let Comp = 'button';
     const props={
         onClick,
+        
     }
 
     if(disabled){
@@ -24,7 +25,7 @@ function Button({ to, href, lefticon, large, primary ,disabled=false, children, 
     }
     const classes = cx('wrapper',{
         primary,
-        large,
+        small,
         disabled
     });
     

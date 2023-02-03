@@ -39,7 +39,7 @@
     }
 }
 
-.primary{
+.primary,.small{
     border:1px solid var(--primary);
 
     .icon{
@@ -51,8 +51,9 @@
 }
 
 
-.large{
-    height: 50px;
+.small{
+    max-width: 135px;
+    margin: 0 auto;
 }
 
 @media (max-width:530px) {

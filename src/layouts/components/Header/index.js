@@ -2,24 +2,28 @@ import Tippy from '@tippyjs/react/headless';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleUser, faBell, faVideoCamera } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames/bind';
-
+import axios from 'axios';
 import Search from '../Search';
 import Button from '~/components/Button';
 import styles from './Header.module.scss'
 import images from '~/assets/images';
 import { wrapper as SeachArea } from '~/components/SearchArea';
 import { Link } from 'react-router-dom';
-
-
-
+import { useEffect, useState } from 'react';
+import * as getDataUser from '~/apiServices/getDataUser';
 
 const cx=classNames.bind(styles);
 
 function Header (){
     
-    const currentUser = true
-
-    const userAvatar = 'https://tse1.mm.bing.net/th?id=OIP.kCxn-fpy95fsok0lZQInkwHaLH&pid=Api&P=0';
+    const [currentUser,setCurrentUser]= useState(undefined);
+    useEffect(()=>{
+        const fetchApi = async ()=>{
+            const resultUser = await getDataUser.getDataUser();
+                setCurrentUser(resultUser);
+            }
+        fetchApi();
+    },[]);
 
     return <header className={cx('wrapper')}>
           <div className={cx('content')}>
@@ -32,12 +36,13 @@ function Header (){
             
                 <div className={cx('actions')}>
 
-                {currentUser ?(
-                    <>
-                        <button className={cx('action-btn')}>
-                            <FontAwesomeIcon icon={faVideoCamera}/>
-                        </button>
-
+                { currentUser &&
+                    <> 
+                        <a href='/Upload'>
+                            <button className={cx('action-btn')}>
+                                <FontAwesomeIcon icon={faVideoCamera}/>
+                            </button>
+                        </a>
                         <button className={cx('action-btn')}>
                             <FontAwesomeIcon icon={faBell}/>
                         </button>
@@ -48,25 +53,48 @@ function Header (){
                             render={(attrs)=>(
                                 <div className={cx('Sign-out')} tabIndex="-1"{...attrs}>           
                                     <SeachArea>
-                                        <Button>
-                                            SIGN OUT
-                                        </Button>
+                                        <div onClick={()=>{
+                                            
+                                            const sendPostRequest = async () => {
+                                                try {
+                                                    await axios.put(`https://63c2ccd0b0c286fbe5f3efa4.mockapi.io/api/user/${currentUser.id}`, 
+                                                    {
+                                                        login: false
+                                                    }
+                                                    );
+                                                } catch (err) {
+                                                    console.error(err);
+                                                }
+                                            }
+
+                                            sendPostRequest();
+                                            setTimeout(() => {
+                                                window.location.reload(false);
+                                            }, 1000);
+                                        }}>
+                                            <Button>
+                                                SIGN OUT
+                                            </Button>
+                                        </div>
                                     </SeachArea>
                                 </div>
                             )}
                         >
-                            <img src={userAvatar} className={cx('user-avatar')} alt=""/>
+                            <img src={currentUser.img} className={cx('user-avatar')} alt=""/>
                             
                         </Tippy>  
-                    </> 
-                    
-                ):(
+                    </>  
+                }
+                { currentUser === false &&
                     <>
-                        <Button href={'http://127.0.0.1:5500/hktube-ui/src/login/login.html'} primary lefticon={<FontAwesomeIcon icon={faCircleUser} />}>
-                            SIGN IN
-                        </Button>
-                    </>
-                )}  
+                    <Button href={'http://127.0.0.1:5500/login/login.html'} primary lefticon={<FontAwesomeIcon icon={faCircleUser} />}>
+                        SIGN IN
+                    </Button>
+                 </>
+                }
+                    
+                   
+               
             </div>
         </div>  
     </header>

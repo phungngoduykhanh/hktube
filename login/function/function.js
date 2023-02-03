@@ -1,6 +1,4 @@
-
-
-const API_URL = "https://63aa9f2dfdc006ba604736ec.mockapi.io/users";
+const API_URL = "https://63c2ccd0b0c286fbe5f3efa4.mockapi.io/api/user";
 let users = [];
 async function getUser() {
   try {
@@ -11,7 +9,6 @@ async function getUser() {
     console.log(e)
   }
 }
-
 function checklogin() {
   let user = document.getElementById("user").value;
   let pass = document.getElementById("pass").value;
@@ -24,18 +21,43 @@ function login() {
   let user = document.getElementById("user").value;
   let pass = document.getElementById("pass").value;
   console.log(user,pass);
-  for (let i = 0; i < users.lenght; i++) {
+  let a,id;
+
+  for (let i = 0; i < users.length; i++) {
+    
     if (user == users[i].usersname && pass == users[i].password) {
-      alert("Success");
-      window.location = "https://www.w3schools.com/jsref/prop_pushbutton_disabled.asp";
-    } else {
-      alert("wrong");
+      a=1
+      id=users[i].id;
     }
+  };
 
+  if(user=="admin" && pass=="admin"){
+    window.location="http://127.0.0.1:5500/Admin%20and%20Changepass%20users/Admin/admin.html"
+    alert('admin')
   }
-  
+  if(a==1){
+    const sendPostRequest = async () => {
+      try {
+          await axios.put(`https://63c2ccd0b0c286fbe5f3efa4.mockapi.io/api/user/${id}`, 
+          {
+            login: true
+          }
+          );
+      } catch (err) {
+          console.error(err);
+      }
+      }
+    sendPostRequest();
 
+    setTimeout(() => {
+      window.location= "http://localhost:3000/"
+    }, 1000);
+    alert("Success")
+  }else if(user!="admin" || pass!="admin"){
+    alert("wrong")
+  }
 }
+
 
 
 function check() {
@@ -57,31 +79,47 @@ function check() {
     document.getElementById("check").style.color = "#77DD77";
     document.getElementById("check").innerHTML = check; 
   }
-  
 }
 
-function signup() {
+function sign_up() {
   let username = document.getElementById("user").value;
   let password = document.getElementById("pass").value;
-  let id;
-  let img = "images"
-
-
+  let name = document.getElementById("name").value;
+  let email = document.getElementById("email").value;
+  console.log(username,password);
+  let valid = 0;
   for (let i = 0; i < users.length; i++) {
-    if (username === users[i].username) {
+    console.log(users[i].usersname);
+    if (username === users[i].usersname) {
       alert ("This username is already had");
     }
     else {
-      let user = {
-        id: id,
-        username: username,
-        password: password,
-        profile_picture: img,
-        name: "username" + id,
-      }
+      valid++;
     }
-
   }
+  if (valid!=0){
+    let user = {
+      usersname:username,
+      password:password,
+      name:name,
+      email:email
+    }
+    const sendPostRequest = async () => {
+      try {
+          await axios.post(`https://63c2ccd0b0c286fbe5f3efa4.mockapi.io/api/user`, user
+  
+          );
+      } catch (err) {
+          console.error(err);
+      }
+      }
+    sendPostRequest();
+
+    alert("Sign up successful!");
+    window.location = "http://127.0.0.1:5500/hktube-ui/login/login.html";
+  }
+
+ 
 }
 
 
@@ -91,10 +129,10 @@ function changepage() {
   let page = document.getElementById("btnchange").value;
   switch (page) {
     case "Sign up":
-      window.location = "http://127.0.0.1:5500/signup.html";
+      window.location = "http://127.0.0.1:5500/login/signup.html";
       break;
     case "Sign in":
-      window.location = "http://127.0.0.1:5500/login.html";
+      window.location = "http://127.0.0.1:5500/login/login.html";
       break;
   }
 }

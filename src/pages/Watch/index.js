@@ -6,6 +6,7 @@ import { LongVideo } from '~/components/LongVideo';
 import * as getApi from '~/apiServices/getApi';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp, faShare, faBars, faDownload } from '@fortawesome/free-solid-svg-icons';
+import * as getDataUser from '~/apiServices/getDataUser';
 
 const cx = classNames.bind(styles);
 
@@ -22,6 +23,8 @@ function Watch(){
     }]);
     const [videos, setVideos]= useState([]);
 
+    const [currentUser,setCurrentUser]= useState();
+
     useEffect(()=>{
         
        setTimeout(() => {
@@ -36,24 +39,26 @@ function Watch(){
                         }
                     })
                     setVideos(resultVD);
+
+                const resultUR = await getDataUser.getDataUser();
+                    setCurrentUser(resultUR);
+                
            }
            fetchApi();
        }, 1500);
-       
     },[])
    
     return (
         <div className={cx('wrapper')}>
-
             <div className={cx('info')}>
 
                 <div className={cx('video-container')}>
                     <iframe  src={`https://www.youtube.com/embed/${dataVideo.video}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
                 </div>
 
-                <h1 className={cx('name-video')}>
+                <span className={cx('name-video')}>
                     {dataVideo.namevideo}
-                </h1>
+                </span>
 
                 <div className={cx('container')}>
                     <div className={(cx('info-author'))}>
@@ -128,7 +133,7 @@ function Watch(){
 
             <div className={cx('menu-item')}>
                 {videos.map((result)=>(
-                    <LongVideo key={result.id} data={result} RL={true} />
+                    <LongVideo key={result.id} data={result} RL={true} UR={currentUser} cl={"cl"}/>
                 ))}
             </div>
 
