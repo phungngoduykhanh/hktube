@@ -1,16 +1,29 @@
 import classNames from 'classnames/bind';
 import  styles  from './Upload.module.scss';
+import { useEffect, useState } from "react";
+import * as getDataUser from '~/apiServices/getDataUser';
 import axios from 'axios';
-import { useState } from 'react';
-
 const cx = classNames.bind(styles);
 
 export default function Upload(){
-    var imgvideo ;
-   function previewFile(){
-    const preview = document.querySelector('#imgpreview');
-    const file = document.querySelector('#img').files[0];
-    const reader = new FileReader();
+    const [currentUser,setCurrentUser]= useState();
+    let imgvideo ;
+
+    useEffect(()=>{
+        const fetchApi = async ()=>{
+            const resultUser = await getDataUser.getDataUser();
+                setCurrentUser(resultUser);
+            }
+            
+        fetchApi();
+    },[]);
+
+    function previewFile(){
+        const preview = document.querySelector('#imgpreview');
+        const file = document.querySelector('#img').files[0];
+        const reader = new FileReader();
+
+    
 
     reader.addEventListener("load",function(){
         // convert image file to base64 string
@@ -24,13 +37,35 @@ export default function Upload(){
     }
 
     function upload(){
+
         var namevideo= document.getElementById("namevideo").value;
         var desc= document.getElementById("Description").value;
         var typevideo= document.getElementById("type").value;
         var video= document.getElementById("Link").value;
-        console.log(namevideo,desc,typevideo,video,imgvideo);
+        var nameauthor=currentUser.name;
+        var imgauthor=currentUser.img;
 
+        var video ={
+            namevideo:namevideo,
+            desc:desc,
+            typevideo:typevideo,
+            video:video,
+            nameauthor:nameauthor,
+            imgauthor:imgauthor,
+            imgvideo:imgvideo
+        }
+        axios.post("https://63c2ccd0b0c286fbe5f3efa4.mockapi.io/api/video",video)
+        .then(function (response) {
+            console.log(response);
+            alert("Upload video success!");
+            window.location.reload(false);
+          })
+          .catch(function (error) {
+            alert("Upload Failed!");
+            console.log(error);
+          });
     }
+
   return(
     <div className={cx("wrapper")}>
         <h1>Upload</h1>

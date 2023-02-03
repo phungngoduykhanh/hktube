@@ -22,12 +22,14 @@ function Watch(){
         like: undefined,
     }]);
     const [videos, setVideos]= useState([]);
+    const [currentUser,setCurrentUser]= useState({img:undefined});
 
-    const [currentUser,setCurrentUser]= useState();
+    
 
     useEffect(()=>{
         
        setTimeout(() => {
+
            const fetchApi = async ()=>{
                const resultDTV = await getDataVideo.getDataVideo();
                    setDataVideo(resultDTV);
@@ -97,7 +99,7 @@ function Watch(){
                     <span>{dataVideo.comment} Comments</span>
                     
                     <div className={cx("user-comment")}>
-                            <img className={cx('img-user')} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXV1ALRHUfWS21R-gnnXw15AIraNNsvxT5Sw&usqp=CAU" alt=''/>
+                            <img className={cx('img-user')} src={currentUser.img} alt=''/>
                             <form>
                                 <label >
                                     <input type="text" name="name" placeholder='Add a comment...'/>
